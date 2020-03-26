@@ -13,4 +13,9 @@ public class SignupException extends Exception{
     public SignupException(String message){
         super( "Failed to create new account. Reason: " + message);       
     }
+    
+    /**
+     * If you need to get the messege -> exception.getMessage() will return you 
+     * all you need to print out
+     */
 }

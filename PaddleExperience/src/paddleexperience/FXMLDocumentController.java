@@ -26,13 +26,17 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Label label;
-    
     private ClubDBAccess clubDB;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText(clubDB.getClubName());
+        try{
+            signUp("Bartosz", "Puszkarski" , "12312312312", "Login with blank", "PasswordWithB@@@@D Chars", "", "", null);
+        } catch (SignupException e){
+            System.out.print(e.getMessage());
+        }
     }
     
     @Override
@@ -52,13 +56,11 @@ public class FXMLDocumentController implements Initializable {
         if(!validLogin(login)) errors.add("Invalid Login");
         if(!validPassword(password)) errors.add("Invalid Password");
         if(!validCreditCard(creditCard, svc)) errors.add("Invalid Credit Card Number or SVC");
-        if(!valid)
         
-        
-        
-        
-        clubDB.getMembers().add(
-            new Member(name, surname, phone, login, password, creditCard, svc, image)); 
+        if(errors.isEmpty()) {
+            clubDB.getMembers().add(new Member(name, surname, phone, login, password, creditCard, svc, image)); 
+        }
+        throw new SignupException(String.join(", ", errors));
     }
 
     private boolean validLogin(String login) {
@@ -66,7 +68,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private boolean validPassword(String password) {
-        return password.length() > 6 && !password.chars().allMatch(Character::isLetterOrDigit);
+        return password.length() > 6 && password.chars().allMatch(Character::isLetterOrDigit);
     }
 
     private boolean validCreditCard(String creditCard, String svc) {
@@ -76,5 +78,4 @@ public class FXMLDocumentController implements Initializable {
                     creditCard.length() == 16 &&
                     svc.length() == 3) ;
     }
-    
 }
