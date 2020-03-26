@@ -5,6 +5,7 @@
  */
 package paddleexperience;
 
+import DBAcess.ClubDBAccess;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,15 +22,18 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label label;
     
+    private ClubDBAccess clubDB;
+    
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        label.setText(clubDB.getClubName());
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        clubDB = ClubDBAccess.getSingletonClubDBAccess();
+        
     }    
     
 }
