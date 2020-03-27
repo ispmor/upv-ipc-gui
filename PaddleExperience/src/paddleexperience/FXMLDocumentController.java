@@ -7,14 +7,21 @@ package paddleexperience;
 
 import DBAcess.ClubDBAccess;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import model.Booking;
+import model.Court;
 import model.Member;
 import paddleexperience.CustomExceptions.SignupException;
 
@@ -46,6 +53,31 @@ public class FXMLDocumentController implements Initializable {
 
     }
     
+    private boolean addNewBooking(String courtName, LocalDate date, LocalTime fromTime){
+        ArrayList<Booking> allBookings = clubDB.getBookings();
+        Court court = clubDB.getCourt(courtName);
+        int bookingDuration = clubDB.getClubBookingDuration();
+        boolean validNewRequest = allBookings.stream().anyMatch((Booking booking) -> {
+           return !(booking.getMadeForDay().compareTo(date) == 0 &&
+                   (booking.getFromTime().compareTo(fromTime) <= 0 &&
+                        booking.getFromTime().plusMinutes(bookingDuration).compareTo(fromTime) > 0) &&
+                   booking.getCourt().getName().equals(courtName));});
+        
+        if(validNewRequest){
+            allBookings.add(new Booking(LocalDateTime.now(), date, fromTime, true, court, member));
+        }
+        return false;
+    }
+    
+    private ObservableList<Booking> getBookingForDate(LocalDate date){
+        ObservableList<Booking> result = FXCollections.observableList(clubDB.getForDayBookings(date));
+        return result;
+    }
+    
+    private ObservableList<Booking> getCourtForDateBooking(String courtName, LocalDate date){
+        ObservableList<Booking> result = FXCollections.observableList(clubDB.getCourtBookings(courtName, date));
+        return result;
+    }
     
     private boolean login(String login, String password){
         Member loggedMember = clubDB.getMemberByCredentials(login, password);
