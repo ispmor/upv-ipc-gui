@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
@@ -26,19 +27,30 @@ import javafx.stage.Stage;
  */
 public class LoginController implements Initializable {
     
+    @FXML 
+    TextField textLogin;
+    
+    @FXML 
+    TextField textPassword;
+    
+    private BackendFunctionality backend;
     
     @FXML
     private void confirm(ActionEvent event) throws IOException {
-        
+        if(backend.login(textLogin.getText(), textPassword.getText())){
+            System.out.println("Logged successfully");
+            //next stage + logged member
+        } else {
+            // Error message handling
+        }
         
         
     }
     
     @FXML
     private void cancel(ActionEvent event) throws IOException {
-    
-       
-        
+        // bakc to paddleexample page
+              
     }
    
     
@@ -47,9 +59,7 @@ public class LoginController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-
-        
+        backend = new BackendFunctionality();        
     }
 
 }

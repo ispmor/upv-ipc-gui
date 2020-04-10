@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="577.0" prefWidth="433.0" spacing="10.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.RegisterController">
+<VBox prefHeight="577.0" prefWidth="433.0" spacing="10.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.RegisterController">
    <children>
       <GridPane alignment="TOP_CENTER" prefHeight="527.0" prefWidth="402.0">
         <columnConstraints>
@@ -30,15 +30,15 @@
             <RowConstraints maxHeight="152.60001220703123" minHeight="9.800000000000011" prefHeight="49.99998779296874" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField promptText="Nombre" GridPane.rowIndex="2" />
-            <TextField promptText="2º Apellido *" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextField promptText="Teléfono" GridPane.rowIndex="4" />
-            <TextField promptText="Login" GridPane.rowIndex="5" />
-            <TextField promptText="Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <TextField promptText="Nº Tarjeta de crédito *" GridPane.rowIndex="6" />
-            <TextField promptText="Código de seguridad *" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <TextField promptText="1º Apellido" GridPane.rowIndex="3" />
-            <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="101.0" text="Cancel" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="8">
+            <TextField fx:id="textName" promptText="Nombre" GridPane.rowIndex="2" />
+            <TextField fx:id="textSurname2" promptText="2º Apellido *" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="textPhone" promptText="Teléfono" GridPane.rowIndex="4" />
+            <TextField fx:id="textLogin" promptText="Login" GridPane.rowIndex="5" />
+            <TextField fx:id="textPassword" promptText="Contraseña" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField fx:id="textCreditCard" promptText="Nº Tarjeta de crédito *" GridPane.rowIndex="6" />
+            <TextField fx:id="textSCV" promptText="Código de seguridad *" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <TextField fx:id="textSurname1" promptText="1º Apellido" GridPane.rowIndex="3" />
+            <Button fx:id="buttonCancel" cancelButton="true" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="101.0" text="Cancel" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="8">
                <font>
                   <Font size="14.0" />
                </font></Button>
