@@ -24,14 +24,18 @@ import paddleexperience.CustomExceptions.SignupException;
 public class BackendFunctionality {
     private ClubDBAccess clubDB;
     private Member member;
+    private static BackendFunctionality instance = null;
     
-    public BackendFunctionality(){
+    private BackendFunctionality(){
         this.clubDB = ClubDBAccess.getSingletonClubDBAccess();
     }
 
-    public BackendFunctionality(Member member){
-        this.clubDB = ClubDBAccess.getSingletonClubDBAccess();
-        this.member = member;
+    public static BackendFunctionality getInstance(){
+        if(instance == null){
+            instance = new BackendFunctionality();
+        }
+        
+        return instance;
     }
     
     public boolean addNewBooking(String courtName, LocalDate date, LocalTime fromTime){
@@ -51,13 +55,33 @@ public class BackendFunctionality {
     }
     
     public ObservableList<Booking> getBookingForDate(LocalDate date){
-        ObservableList<Booking> result = FXCollections.observableList(clubDB.getForDayBookings(date));
-        return result;
+        ArrayList<Booking> bookings = clubDB.getForDayBookings(date);
+        ArrayList<Booking> freeDay = getFreeDay();
+        if(!bookings.isEmpty()){
+                int bookings_i = 0;
+                for(int i = 0; i < freeDay.size(); i++){
+                    if(freeDay.get(i).getFromTime() == bookings.get(bookings_i).getFromTime()){
+                        freeDay.set(i, bookings.get(bookings_i));
+                        bookings_i++; 
+                    }
+                }
+        }
+        return FXCollections.observableList(freeDay);
     }
     
     public ObservableList<Booking> getCourtForDateBooking(String courtName, LocalDate date){
-        ObservableList<Booking> result = FXCollections.observableList(clubDB.getCourtBookings(courtName, date));
-        return result;
+        ArrayList<Booking> bookings = clubDB.getCourtBookings(courtName, date);
+        ArrayList<Booking> freeDay = getFreeDay();
+        if(!bookings.isEmpty()){
+                int bookings_i = 0;
+                for(int i = 0; i < freeDay.size(); i++){
+                    if(freeDay.get(i).getFromTime() == bookings.get(bookings_i).getFromTime()){
+                        freeDay.set(i, bookings.get(bookings_i));
+                        bookings_i++; 
+                    }
+                }
+        }
+        return FXCollections.observableList(freeDay);
     }
     
     public boolean login(String login, String password){
@@ -128,6 +152,33 @@ public class BackendFunctionality {
         }
         return false;
     }
+    
+    public ArrayList<Booking> getFreeDay(){
+        ArrayList<Booking> freeDay = new ArrayList<>();
+        int minutes = 9 * 60;
+        int minutes_from;
+        int h, h_to, m, m_to;
+        for(int i = 0; i < clubDB.getClubBookingSlots(); i++){
+            minutes_from = minutes;
+            minutes = minutes + clubDB.getClubBookingDuration();
+            h = minutes_from / 60;
+            m = minutes_from % 60;
+            h_to = minutes / 60;
+            m_to = minutes % 60;
+            
+            freeDay.add(new Booking(LocalDateTime.now(),
+                    LocalDate.now(),
+                    LocalTime.of(h, m),
+                    false,
+                    null, null));
+        }
+        return freeDay;
+    }
+    
+    public Court getCourt(String courtName){
+        return clubDB.getCourt(courtName);
+    }
+    
     
     public Member getMember(){
         return member;
