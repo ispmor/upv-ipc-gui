@@ -25,63 +25,58 @@ import javafx.stage.Stage;
  *
  * @author Chris
  */
-public class PaddleExperienceController implements Initializable {
+public class PistaChoiceController implements Initializable {
     
+  
+    
+   private BackendFunctionality backend; 
+   
+  
     
     @FXML
-    private void court(ActionEvent event) throws IOException {
+    private void reserva(ActionEvent event) throws IOException {
         
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("PistaView.fxml"));
-        stage.setTitle("Paddle Experience APP - Ver disponibilidad de pistas");
+       Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("ReservarView.fxml"));
+        stage.setTitle("Paddle Experience APP - Reservar pista");
         stage.setScene(new Scene(root));
         stage.show();
         
         Stage actual  = (Stage) ((Node) event.getSource()).getScene().getWindow();
-         actual.close();
+            actual.close();
     }
+   
     
     @FXML
-    private void reg(ActionEvent event) throws IOException {
+    private void ver(ActionEvent event) throws IOException {
         
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("RegisterView.fxml"));
-        stage.setTitle("Paddle Experience APP - Registro de socio");
+       Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("VerView.fxml"));
+        stage.setTitle("Paddle Experience APP - Mis pistas");
         stage.setScene(new Scene(root));
         stage.show();
-        
-        Stage actual  = (Stage) ((Node) event.getSource()).getScene().getWindow();
-         actual.close();
-    }
-    
-    @FXML
-    private void aut(ActionEvent event) throws IOException {
-        
-        
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("LoginView.fxml"));
-        stage.setTitle("Paddle Experience APP - Autentificarse");
-        stage.setScene(new Scene(root));
-        stage.show();
-        
-        Stage actual  = (Stage) ((Node) event.getSource()).getScene().getWindow();
-         actual.close();
      
+        Stage actual  = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            actual.close();
     }
      
-    
+    @FXML
+    private void GoBack(ActionEvent event) throws IOException {
+        
+       Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("PaddleExperienceView.fxml"));
+        stage.setTitle("Paddle Experience APP - Mis pistas");
+        stage.setScene(new Scene(root));
+        stage.show();
+        
+        Stage actual  = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            actual.close();
+        
+    }
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    
-   
+        backend = new BackendFunctionality();
     }
-    
-    
-    
-        
-         
-  
-    
+
 }

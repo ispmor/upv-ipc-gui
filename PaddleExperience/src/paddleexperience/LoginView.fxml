@@ -1,51 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="261.0" prefWidth="435.0" spacing="10.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.LoginController">
-   <children>
-      <GridPane alignment="TOP_CENTER" prefHeight="230.0" prefWidth="395.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="494.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.LoginController">
+   <left>
+      <Pane prefHeight="592.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="592.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="50.0" prefWidth="494.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <Pane prefHeight="50.0" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="191.4000244140625" minWidth="10.0" prefWidth="115.99998321533204" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.99998779296874" minWidth="10.0" prefWidth="244.80001678466795" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.99998779296874" minWidth="10.0" prefWidth="37.99997558593748" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="152.20001220703125" minWidth="10.0" prefWidth="77.79998016357422" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="245.00000762939453" minWidth="10.0" prefWidth="236.20001983642578" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="160.60001220703126" minHeight="10.0" prefHeight="32.79999389648438" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="160.60001220703126" minHeight="10.0" prefHeight="58.40001068115234" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="299.79999389648435" minHeight="10.0" prefHeight="61.400006103515636" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="327.1999877929688" minHeight="10.0" prefHeight="28.599993896484364" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="327.1999877929688" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="364.8" minHeight="10.0" prefHeight="13.799989700317383" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="364.8" minHeight="10.0" prefHeight="55.5999984741211" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="364.8" minHeight="0.0" prefHeight="27.79998779296875" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="364.8" minHeight="0.0" prefHeight="63.79999999999998" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="206.5999816894531" minHeight="10.0" prefHeight="41.400006103515636" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="206.5999816894531" minHeight="10.0" prefHeight="82.19999389648436" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="textLogin" prefWidth="270.0" promptText="Login" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="textPassword" promptText="Contaseña" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <HBox alignment="BOTTOM_CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <ImageView fitHeight="60.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@imgs/user.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="61.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@imgs/passw.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
-                  <Button fx:id="buttonAccept" defaultButton="true" mnemonicParsing="false" onAction="#confirm" prefHeight="30.0" prefWidth="85.0" text="Acceder">
+                  <Button defaultButton="true" layoutX="-76.0" layoutY="15.0" mnemonicParsing="false" onAction="#confirm" prefHeight="50.0" prefWidth="132.0" text="Acceder">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="cancel" cancelButton="true" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="82.0" text="Cancelar" textAlignment="CENTER">
+                  <Button cancelButton="true" layoutX="106.0" layoutY="15.0" mnemonicParsing="false" onAction="#cancel" prefHeight="50.0" prefWidth="130.0" text="Cancelar" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
                </children>
-            </HBox>
+            </Pane>
+            <TextField fx:id="textLogin" prefHeight="34.0" prefWidth="236.0" promptText="Login" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="textPassword" prefHeight="36.0" prefWidth="236.0" promptText="Contraseña" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+   </center>
+</BorderPane>

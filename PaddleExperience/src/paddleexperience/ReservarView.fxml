@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="494.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.ReservarController">
+   <top>
+      <Pane prefHeight="126.0" prefWidth="494.0" BorderPane.alignment="CENTER">
+         <children>
+            <DatePicker fx:id="datePicker" layoutX="63.0" layoutY="57.0" prefHeight="43.0" prefWidth="369.0" promptText="Seleccionar fecha" />
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="390.0" prefWidth="52.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="390.0" prefWidth="47.0" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <ListView fx:id="list" prefHeight="246.0" prefWidth="61.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <Pane prefHeight="124.0" prefWidth="494.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="296.0" layoutY="35.0" mnemonicParsing="false" onAction="#cancel" prefHeight="46.0" prefWidth="184.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Cancelar" textAlignment="CENTER">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="35.0" mnemonicParsing="false" onAction="#confirm" prefHeight="68.0" prefWidth="211.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Confirmar" textAlignment="CENTER">
+               <font>
+                  <Font name="Candara" size="33.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </bottom>
+</BorderPane>
