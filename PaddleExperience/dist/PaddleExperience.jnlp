@@ -2,14 +2,14 @@
 <jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="PaddleExperience.jnlp">
   <information>
     <title>PaddleExperience</title>
-    <vendor>Chris</vendor>
+    <vendor>barpus</vendor>
     <description>null</description>
     <offline-allowed/>
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="PaddleExperience.jar" size="1028866" download="eager" />
-    <jar href="lib\ClubDBAccess.jar" size="727913" download="eager" />
+    <jar href="PaddleExperience.jar" size="1047125" download="eager" />
+    <jar href="lib\ClubDBAccess.jar" size="727900" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="paddleexperience.PaddleExperience"  name="PaddleExperience" />
   <update check="always"/>

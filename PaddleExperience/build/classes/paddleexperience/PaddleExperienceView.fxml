@@ -14,41 +14,48 @@
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="315.20000610351565" minHeight="10.0" prefHeight="74.60001068115236" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="315.20000610351565" minHeight="10.0" prefHeight="200.99998931884767" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="315.20000610351565" minHeight="10.0" prefHeight="75.80000000000001" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="244.19998779296878" minHeight="10.0" prefHeight="139.99998779296874" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="178.39999999999998" minHeight="10.0" prefHeight="138.60002441406243" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="171.8" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="130.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="130.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="130.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="97.0" fitWidth="332.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+            <ImageView fitHeight="97.0" fitWidth="332.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="regist" layoutX="10.0" layoutY="276.0" mnemonicParsing="false" onAction="#reg" prefHeight="82.0" prefWidth="328.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Registro de socio" textAlignment="CENTER" GridPane.rowIndex="4">
+            <Button layoutX="10.0" layoutY="276.0" mnemonicParsing="false" onAction="#reg" prefHeight="82.0" prefWidth="295.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Registro de socio" textAlignment="CENTER" GridPane.rowIndex="3">
                <font>
-                  <Font name="Book Antiqua Bold" size="33.0" />
+                  <Font size="31.0" />
                </font>
             </Button>
-            <Button fx:id="autent" mnemonicParsing="false" onAction="#aut" prefHeight="82.0" prefWidth="328.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Autenticarse" textAlignment="CENTER" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" onAction="#aut" prefHeight="82.0" prefWidth="295.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Autenticarse" textAlignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font name="Candara" size="33.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="358.0" mnemonicParsing="false" onAction="#court" prefHeight="82.0" prefWidth="295.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: white;" text="Pistas de hoy" textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Candara" size="35.0" />
                </font>
             </Button>
          </children>
       </GridPane>
    </center>
    <left>
-      <Pane prefHeight="592.0" prefWidth="75.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="592.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
       <Pane prefHeight="592.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Pane prefHeight="57.0" prefWidth="494.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="50.0" prefWidth="494.0" BorderPane.alignment="CENTER" />
    </bottom>
+   <top>
+      <Pane prefHeight="50.0" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>
