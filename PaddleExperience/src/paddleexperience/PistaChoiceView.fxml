@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="494.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.PistaChoiceController">
+   <left>
+      <Pane prefHeight="592.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="592.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="50.0" prefWidth="494.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <Pane prefHeight="50.0" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="171.8" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="130.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="130.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="130.0" valignment="CENTER" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button layoutX="10.0" layoutY="276.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="82.0" prefWidth="295.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Atrás" textAlignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#ver" prefHeight="82.0" prefWidth="295.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Mis reservas" textAlignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Candara" size="33.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="358.0" mnemonicParsing="false" onAction="#reserva" prefHeight="82.0" prefWidth="295.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: white;" text="Reservar pista" textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Candara" size="35.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
