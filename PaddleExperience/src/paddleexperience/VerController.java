@@ -46,16 +46,9 @@ public class VerController implements Initializable {
    private BackendFunctionality backend; 
    
    @FXML
-   private void confirm(ActionEvent event) throws IOException {
+   private void delete(ActionEvent event) throws IOException {
        
-       Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("PistaChoiceView.fxml"));
-        stage.setTitle("Paddle Experience APP - Menú de pistas");
-        stage.setScene(new Scene(root));
-        stage.show();
-        
-         Stage actual  = (Stage) ((Node) event.getSource()).getScene().getWindow();
-           actual.close();
+       
        
    }
     

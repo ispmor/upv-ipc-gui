@@ -13,22 +13,22 @@
       <Pane prefHeight="126.0" prefWidth="494.0" BorderPane.alignment="CENTER">
          <children>
             <DatePicker fx:id="datePicker" layoutX="63.0" layoutY="20.0" prefHeight="43.0" prefWidth="369.0" promptText="Seleccionar fecha" />
-            <Button layoutX="29.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 1">
+            <Button layoutX="20.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 1">
                <font>
                   <Font name="Candara" size="23.0" />
                </font>
             </Button>
-            <Button layoutX="143.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 1">
+            <Button layoutX="134.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 2">
                <font>
                   <Font name="Candara" size="23.0" />
                </font>
             </Button>
-            <Button layoutX="257.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 1">
+            <Button layoutX="248.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 3">
                <font>
                   <Font name="Candara" size="23.0" />
                </font>
             </Button>
-            <Button layoutX="354.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 1">
+            <Button layoutX="362.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 4">
                <font>
                   <Font name="Candara" size="23.0" />
                </font>
@@ -37,20 +37,20 @@
       </Pane>
    </top>
    <left>
-      <Pane prefHeight="396.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="396.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Pane prefHeight="396.0" prefWidth="26.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="396.0" prefWidth="18.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
       <Pane prefHeight="124.0" prefWidth="494.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="296.0" layoutY="35.0" mnemonicParsing="false" onAction="#cancel" prefHeight="46.0" prefWidth="184.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Cancelar" textAlignment="CENTER">
+            <Button layoutX="290.0" layoutY="35.0" mnemonicParsing="false" onAction="#cancel" prefHeight="46.0" prefWidth="184.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Cancelar" textAlignment="CENTER">
                <font>
                   <Font size="31.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="35.0" mnemonicParsing="false" onAction="#Reservar" prefHeight="68.0" prefWidth="211.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Reservar" textAlignment="CENTER">
+            <Button layoutX="21.0" layoutY="35.0" mnemonicParsing="false" onAction="#Reservar" prefHeight="68.0" prefWidth="211.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Reservar" textAlignment="CENTER">
                <font>
                   <Font name="Candara" size="33.0" />
                </font>
@@ -59,7 +59,7 @@
       </Pane>
    </bottom>
    <center>
-      <TableView prefWidth="453.0" BorderPane.alignment="CENTER">
+      <TableView prefHeight="396.0" prefWidth="456.0" BorderPane.alignment="CENTER">
          <columns>
             <TableColumn editable="false" prefWidth="132.00000035762787" sortType="DESCENDING" sortable="false" text="Hora de inicio" />
             <TableColumn editable="false" prefWidth="128.0" sortType="DESCENDING" sortable="false" text="Hora de fin." />
