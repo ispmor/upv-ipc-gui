@@ -41,7 +41,7 @@
       <Pane prefHeight="592.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <TableView prefWidth="453.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" prefWidth="453.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn editable="false" prefWidth="112.79998397827148" sortType="DESCENDING" sortable="false" text="Horarios" />
           <TableColumn editable="false" minWidth="-Infinity" prefWidth="156.00001525878906" sortType="DESCENDING" sortable="false" text="Participante 1" />
@@ -51,11 +51,11 @@
       </TableView>
    </center>
    <bottom>
-      <Pane prefHeight="78.0" prefWidth="494.0" BorderPane.alignment="CENTER">
+      <Pane onDragDetected="#GoBack" prefHeight="103.0" prefWidth="494.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="196.0" layoutY="12.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="50.0" prefWidth="109.0" text="Atrás">
+            <Button layoutX="155.0" layoutY="18.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="46.0" prefWidth="184.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Cancelar" textAlignment="CENTER">
                <font>
-                  <Font name="Candara" size="26.0" />
+                  <Font size="31.0" />
                </font>
             </Button>
          </children>
