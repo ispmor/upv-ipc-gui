@@ -45,17 +45,15 @@
       <TableView fx:id="tableView" prefWidth="453.0" BorderPane.alignment="CENTER">
 
         <columns>
-          <TableColumn fx:id="columnHorarios" editable="false" prefWidth="112.79998397827148" sortType="DESCENDING" sortable="false" text="Horarios" />
-          <TableColumn editable="false" minWidth="-Infinity" prefWidth="156.00001525878906" sortType="DESCENDING" sortable="false" text="Participante 1" />
-            <TableColumn editable="false" minWidth="0.79998779296875" prefWidth="28.79998779296875" sortType="DESCENDING" sortable="false" text="VS" />
-            <TableColumn editable="false" prefWidth="156.800048828125" sortType="DESCENDING" sortable="false" text="Participante 2" />
+          <TableColumn fx:id="columnHorarios" editable="false" prefWidth="154.0" sortType="DESCENDING" sortable="false" text="Horarios" />
+          <TableColumn fx:id="participant" editable="false" minWidth="-Infinity" prefWidth="299.0" sortType="DESCENDING" sortable="false" text="Participante" />
         </columns>
       </TableView>
    </center>
    <bottom>
-      <Pane onDragDetected="#GoBack" prefHeight="103.0" prefWidth="494.0" BorderPane.alignment="CENTER">
+      <Pane onDragDetected="#goBack" prefHeight="103.0" prefWidth="494.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="155.0" layoutY="18.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="46.0" prefWidth="184.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Cancelar" textAlignment="CENTER">
+            <Button layoutX="155.0" layoutY="18.0" mnemonicParsing="false" onAction="#goBack" prefHeight="46.0" prefWidth="184.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Cancelar" textAlignment="CENTER">
                <font>
                   <Font size="31.0" />
                </font>

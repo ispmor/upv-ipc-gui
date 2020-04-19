@@ -25,9 +25,11 @@ public class BackendFunctionality {
     private ClubDBAccess clubDB;
     private Member member;
     private static BackendFunctionality instance = null;
+    private ArrayList<Booking> allBookings;
     
     private BackendFunctionality(){
         this.clubDB = ClubDBAccess.getSingletonClubDBAccess();
+        allBookings = clubDB.getBookings();
     }
 
     public static BackendFunctionality getInstance(){
@@ -39,7 +41,6 @@ public class BackendFunctionality {
     }
     
     public boolean addNewBooking(String courtName, LocalDate date, LocalTime fromTime){
-        ArrayList<Booking> allBookings = clubDB.getBookings();
         Court court = clubDB.getCourt(courtName);
         int bookingDuration = clubDB.getClubBookingDuration();
         boolean validNewRequest = allBookings.stream().anyMatch((Booking booking) -> {
@@ -50,8 +51,10 @@ public class BackendFunctionality {
         
         if(validNewRequest){
             allBookings.add(new Booking(LocalDateTime.now(), date, fromTime, true, court, member));
+            
         }
-        return false;
+        save();
+        return validNewRequest;
     }
     
     public ObservableList<Booking> getBookingForDate(LocalDate date){
@@ -70,14 +73,19 @@ public class BackendFunctionality {
     }
     
     public ObservableList<Booking> getCourtForDateBooking(String courtName, LocalDate date){
+        System.out.println(courtName);
         ArrayList<Booking> bookings = clubDB.getCourtBookings(courtName, date);
+        System.out.println( bookings.size());
         ArrayList<Booking> freeDay = getFreeDay();
         if(!bookings.isEmpty()){
                 int bookings_i = 0;
                 for(int i = 0; i < freeDay.size(); i++){
-                    if(freeDay.get(i).getFromTime() == bookings.get(bookings_i).getFromTime()){
+                    if(freeDay.get(i).getFromTime().compareTo(bookings.get(bookings_i).getFromTime()) == 0){
                         freeDay.set(i, bookings.get(bookings_i));
                         bookings_i++; 
+                        if(bookings_i == bookings.size()) {
+                            break;
+                        }
                     }
                 }
         }
@@ -144,10 +152,18 @@ public class BackendFunctionality {
         return result;
     }
     
+    public ArrayList<Booking> getUserBookingsArrayList(String login){
+        return clubDB.getUserBookings(login);
+    }
+    
     public boolean deleteBooking(Booking booking){
         ArrayList<Booking> bookings = clubDB.getBookings();
-        if(bookings.contains(booking)){
+        System.out.println(booking.getFromTime().plusHours(24).isAfter(LocalTime.now()));
+        if(bookings.contains(booking) && 
+                !booking.getFromTime().plusHours(24).isAfter(LocalTime.now()) &&
+                 booking.getPaid()){
             bookings.remove(booking);
+            save();
             return true;
         }
         return false;
@@ -179,8 +195,20 @@ public class BackendFunctionality {
         return clubDB.getCourt(courtName);
     }
     
+    public int getDuration(){
+        return clubDB.getClubBookingDuration();
+    }
+    
     
     public Member getMember(){
         return member;
+    }
+    
+    public String getClubName(){
+        return clubDB.getClubName();
+    }
+    
+    public void save(){
+        clubDB.saveDB();
     }
 }
