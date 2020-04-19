@@ -10,7 +10,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -23,6 +26,17 @@ public class PaddleExperience extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("PaddleExperienceView.fxml"));
         primaryStage.setTitle("Paddle Experience APP - Menú principal");
         primaryStage.setScene(new Scene(root));
+        
+        
+        primaryStage.setOnCloseRequest((WindowEvent event) ->{
+        Alert alert = new Alert(AlertType.INFORMATION);
+        BackendFunctionality backend = BackendFunctionality.getInstance();
+        alert.setTitle(backend.getClubName());
+        alert.setHeaderText("Saving data in DB");
+        alert.setContentText("The application is saving the changes into the database. This action can expend some minutes.");
+        alert.show();
+        backend.save(); });
+        
         primaryStage.show();
     }
 

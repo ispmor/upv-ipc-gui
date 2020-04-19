@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="494.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.PistaChoiceController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="494.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.PistaChoiceController">
    <left>
       <Pane prefHeight="592.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
    </left>
@@ -33,7 +33,7 @@
             <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="130.0" valignment="CENTER" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button layoutX="10.0" layoutY="276.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="82.0" prefWidth="295.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Atrás" textAlignment="CENTER" GridPane.rowIndex="3">
+            <Button layoutX="10.0" layoutY="276.0" mnemonicParsing="false" onAction="#goBack" prefHeight="82.0" prefWidth="295.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Atrás" textAlignment="CENTER" GridPane.rowIndex="3">
                <font>
                   <Font size="31.0" />
                </font>

@@ -61,7 +61,9 @@ public class PistaChoiceController implements Initializable {
     }
      
     @FXML
-    private void GoBack(ActionEvent event) throws IOException {
+    private void goBack(ActionEvent event) throws IOException {
+        
+        backend.save();
         
        Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("PaddleExperienceView.fxml"));

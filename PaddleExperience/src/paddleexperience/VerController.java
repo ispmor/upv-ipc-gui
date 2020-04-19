@@ -8,6 +8,7 @@ package paddleexperience;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,15 +23,22 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import paddleexperience.CustomExceptions.SignupException;
 import model.LocalDateAdapter;
 import model.DateTimeAdapter;
 import model.LocalTimeAdapter;
 import model.Booking;
+import model.Court;
 
 
 
@@ -39,23 +47,36 @@ import model.Booking;
  *
  * @author Chris
  */
-public class VerController implements Initializable {
-    
+public class VerController implements Initializable {   
+   @FXML
+   private TableView table;
    
    @FXML
-   private DatePicker datePicker;
+   private TableColumn columnStart;
+   
+   @FXML 
+   private TableColumn columnEnd;
    
    @FXML
-   private ListView list;
+   private TableColumn columnCourt;
+   
+   @FXML
+   private TableColumn columnPaid;
+   
+   @FXML
+   private TableColumn columnDia;
    
    private BackendFunctionality backend; 
+   
+   private Booking selectedBooking;
 
    
    @FXML
    private void delete(ActionEvent event) throws IOException {
-       
-       
-       
+       if(!backend.deleteBooking(selectedBooking)){
+           throw new IOException("Booking already paid or less than 24h");
+        }
+       updateMemberBooking();
    }
     
    @FXML
@@ -73,12 +94,136 @@ public class VerController implements Initializable {
    }
    
    @FXML
-   private void updateMemberBooking(ActionEvent event) {
+   private void select(MouseEvent event){
+       this.selectedBooking = ((Booking) table.getSelectionModel().getSelectedItem());
+       System.out.println(this.selectedBooking);
+   }
+   
+   @FXML
+   private void updateMemberBooking() {
        ObservableList obsList = backend.getUserBookings(backend.getMember().getLogin());
-       if(obsList.size() == 0){
-           obsList.add("No bookings made");
+       int listsize = obsList.size();
+       if(listsize > 10){
+           obsList = (ObservableList) obsList.subList(listsize - 10, listsize -1 );
        }
-       list.setItems(obsList);
+       
+       table.setItems(obsList);
+       columnDia.setCellFactory(new Callback<TableColumn<Booking, String>,
+                TableCell<Booking, String>>(){
+                    @Override
+                    public TableCell<Booking, String> call(
+                    TableColumn<Booking, String> param) {
+                        return new TableCell<Booking, String>(){
+                            @Override
+                            protected void updateItem(String item, boolean empty) {
+                                if(!empty){
+                                    int currentIndex = indexProperty()
+                                    .getValue() < 0 ? 0
+                                    : indexProperty().getValue();
+                                    
+                                    LocalDate day = param.getTableView()
+                                            .getItems()
+                                            .get(currentIndex)
+                                            .getMadeForDay();
+                                    
+                                        setText(day.toString());
+                                    
+                                } 
+                            }
+                        };
+                    }
+                });
+       
+       columnStart.setCellValueFactory(new PropertyValueFactory<Booking, String>("fromTime"));
+       columnCourt.setCellFactory(new Callback<TableColumn<Booking, String>,
+                TableCell<Booking, String>>(){
+                    @Override
+                    public TableCell<Booking, String> call(
+                    TableColumn<Booking, String> param) {
+                        return new TableCell<Booking, String>(){
+                            @Override
+                            protected void updateItem(String item, boolean empty) {
+                                if(!empty){
+                                    int currentIndex = indexProperty()
+                                    .getValue() < 0 ? 0
+                                    : indexProperty().getValue();
+                                    
+                                    Court court = param.getTableView()
+                                            .getItems()
+                                            .get(currentIndex)
+                                            .getCourt();
+                                    
+                                        setText(court.getName());
+                                    
+                                } 
+                            }
+                        };
+                    }
+                });
+       columnEnd.setCellFactory(new Callback<TableColumn<Booking, String>,
+                TableCell<Booking, String>>(){
+                    @Override
+                    public TableCell<Booking, String> call(
+                    TableColumn<Booking, String> param) {
+                        return new TableCell<Booking, String>(){
+                            @Override
+                            protected void updateItem(String item, boolean empty) {
+                                if(!empty){
+                                    int currentIndex = indexProperty()
+                                    .getValue() < 0 ? 0
+                                    : indexProperty().getValue();
+                                    
+                                    LocalTime time = param.getTableView()
+                                            .getItems()
+                                            .get(currentIndex)
+                                            .getFromTime()
+                                            .plusMinutes(
+                                             backend.getDuration()
+                                            );
+                                    
+                                        setText(time.toString());
+                                    
+                                } 
+                            }
+                        };
+                    }
+                });
+        
+        columnPaid.setCellFactory(new Callback<TableColumn<Booking, String>,
+                TableCell<Booking, String>>(){
+                    @Override
+                    public TableCell<Booking, String> call(
+                    TableColumn<Booking, String> param) {
+                        return new TableCell<Booking, String>(){
+                            @Override
+                            protected void updateItem(String item, boolean empty) {
+                                if(!empty){
+                                    int currentIndex = indexProperty()
+                                    .getValue() < 0 ? 0
+                                    : indexProperty().getValue();
+                                    
+                                    boolean status = param.getTableView()
+                                            .getItems()
+                                            .get(currentIndex)
+                                            .getPaid();
+                                    
+                                    if(status){
+                                        setTextFill(Color.WHITE);
+                                        setStyle("-fx-font-weight: bold");
+                                        setStyle("-fx-background-color: green");
+                                        setText("Pagado");
+                                    } else {
+                                        setTextFill(Color.BLACK);
+                                        setStyle("-fx-font-weight: bold");
+                                        setStyle("-fx-background-color: grey");
+                                        setText("Pendiente");
+                                    }
+                                    
+                                } 
+                            }
+                        };
+                    }
+                });
    }
     
      
@@ -87,17 +232,8 @@ public class VerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         backend = BackendFunctionality.getInstance();
-        
-        datePicker.setDayCellFactory((DatePicker picker) -> {
-            return new DateCell() {
-                @Override
-                public void updateItem(LocalDate date, boolean empty) {
-                    super.updateItem(date, empty);
-                    LocalDate today = LocalDate.now();
-                    setDisable(empty || date.compareTo(today) < 0 );
-                }
-            };
-        });
+
+        updateMemberBooking();
     }
 }
         

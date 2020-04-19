@@ -8,27 +8,27 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="494.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.ReservarController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="494.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.ReservarController">
    <top>
       <Pane prefHeight="126.0" prefWidth="494.0" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker fx:id="datePicker" layoutX="63.0" layoutY="20.0" prefHeight="43.0" prefWidth="369.0" promptText="Seleccionar fecha" />
-            <Button layoutX="20.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 1">
+            <DatePicker fx:id="datePicker" layoutX="63.0" layoutY="20.0" onAction="#updateDate" prefHeight="43.0" prefWidth="369.0" promptText="Seleccionar fecha" />
+            <Button layoutX="20.0" layoutY="78.0" mnemonicParsing="false" onAction="#updateCourtTableViewOnClick" prefHeight="48.0" prefWidth="114.0" text="Pista 1">
                <font>
                   <Font name="Candara" size="23.0" />
                </font>
             </Button>
-            <Button layoutX="134.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 2">
+            <Button layoutX="134.0" layoutY="78.0" mnemonicParsing="false" onAction="#updateCourtTableViewOnClick" prefHeight="48.0" prefWidth="114.0" text="Pista 2">
                <font>
                   <Font name="Candara" size="23.0" />
                </font>
             </Button>
-            <Button layoutX="248.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 3">
+            <Button layoutX="248.0" layoutY="78.0" mnemonicParsing="false" onAction="#updateCourtTableViewOnClick" prefHeight="48.0" prefWidth="114.0" text="Pista 3">
                <font>
                   <Font name="Candara" size="23.0" />
                </font>
             </Button>
-            <Button layoutX="362.0" layoutY="78.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="114.0" text="Pista 4">
+            <Button layoutX="362.0" layoutY="78.0" mnemonicParsing="false" onAction="#updateCourtTableViewOnClick" prefHeight="48.0" prefWidth="114.0" text="Pista 4">
                <font>
                   <Font name="Candara" size="23.0" />
                </font>
@@ -50,7 +50,7 @@
                   <Font size="31.0" />
                </font>
             </Button>
-            <Button layoutX="21.0" layoutY="35.0" mnemonicParsing="false" onAction="#Reservar" prefHeight="68.0" prefWidth="211.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Reservar" textAlignment="CENTER">
+            <Button layoutX="21.0" layoutY="35.0" mnemonicParsing="false" onAction="#reservar" prefHeight="68.0" prefWidth="211.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Reservar" textAlignment="CENTER">
                <font>
                   <Font name="Candara" size="33.0" />
                </font>
@@ -59,11 +59,11 @@
       </Pane>
    </bottom>
    <center>
-      <TableView prefHeight="396.0" prefWidth="456.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" onMouseClicked="#select" prefHeight="396.0" prefWidth="456.0" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn editable="false" prefWidth="132.00000035762787" sortType="DESCENDING" sortable="false" text="Hora de inicio" />
-            <TableColumn editable="false" prefWidth="128.0" sortType="DESCENDING" sortable="false" text="Hora de fin." />
-            <TableColumn prefWidth="178.4000244140625" text="Disponibilidad" />
+            <TableColumn fx:id="columnHorarioStart" editable="false" prefWidth="166.0" sortType="DESCENDING" sortable="false" text="Hora de inicio" />
+            <TableColumn fx:id="columnHorarioEnd" editable="false" prefWidth="136.0" sortType="DESCENDING" sortable="false" text="Hora de fin." />
+            <TableColumn fx:id="columnDisponibilidad" prefWidth="153.0" text="Disponibilidad" />
          </columns>
       </TableView>
    </center>

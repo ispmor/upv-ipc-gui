@@ -18,12 +18,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.Booking;
 import model.Court;
+import model.Member;
 
 
 
@@ -44,9 +48,11 @@ public class PistasController implements Initializable {
     
     @FXML 
     private TableColumn<Booking, String> columnHorarios;
+    @FXML 
+    private TableColumn<Booking, String> participant;
     
     @FXML
-    private void GoBack(ActionEvent event) throws IOException {
+    private void goBack(ActionEvent event) throws IOException {
         
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("PaddleExperienceView.fxml"));
@@ -64,22 +70,47 @@ public class PistasController implements Initializable {
         String courtName = ((Button)event.getSource()).getText();
         
         switch(courtName){
-            case "Piso 1":
+            case "Pista 1":
                 courtName = "Court 1";
                 break;
-            case "Piso 2":
+            case "Pista 2":
                 courtName = "Court 2";
                 break;
-            case "Piso 3":
+            case "Pista 3":
                 courtName = "Court 3";
                 break;
-            case "Piso 4":
+            case "Pista 4":
                 courtName = "Court 4";
                 break;
                 
         }
         tableView.setItems(backend.getCourtForDateBooking(courtName, LocalDate.now()));
         columnHorarios.setCellValueFactory(new PropertyValueFactory<Booking, String>("fromTime"));
+        participant.setCellFactory(new Callback<TableColumn<Booking, String>,
+                TableCell<Booking, String>>(){
+                    @Override
+                    public TableCell<Booking, String> call(
+                    TableColumn<Booking, String> param) {
+                        return new TableCell<Booking, String>(){
+                            @Override
+                            protected void updateItem(String item, boolean empty) {
+                                if(!empty){
+                                    int currentIndex = indexProperty()
+                                    .getValue() < 0 ? 0
+                                    : indexProperty().getValue();
+                                    
+                                    Member member = param.getTableView()
+                                            .getItems()
+                                            .get(currentIndex)
+                                            .getMember();
+                                    if(member != null){
+                                        setText(member.getLogin());
+                                    }
+                                } 
+                            }
+                        };
+                    }
+                });
         System.out.println(tableView.getItems());
     }
    
