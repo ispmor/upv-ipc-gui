@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -42,8 +45,11 @@ public class VerController implements Initializable {
    @FXML
    private DatePicker datePicker;
    
-    
+   @FXML
+   private ListView list;
+   
    private BackendFunctionality backend; 
+
    
    @FXML
    private void delete(ActionEvent event) throws IOException {
@@ -66,13 +72,21 @@ public class VerController implements Initializable {
 
    }
    
+   @FXML
+   private void updateMemberBooking(ActionEvent event) {
+       ObservableList obsList = backend.getUserBookings(backend.getMember().getLogin());
+       if(obsList.size() == 0){
+           obsList.add("No bookings made");
+       }
+       list.setItems(obsList);
+   }
     
      
     
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        backend = new BackendFunctionality();
+        backend = BackendFunctionality.getInstance();
         
         datePicker.setDayCellFactory((DatePicker picker) -> {
             return new DateCell() {

@@ -76,7 +76,7 @@ public class PistaChoiceController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        backend = new BackendFunctionality();
+        backend = BackendFunctionality.getInstance();
     }
 
 }
