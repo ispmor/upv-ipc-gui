@@ -2,34 +2,37 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="494.0" style="-fx-background-color: #6E6E6E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paddleexperience.VerController">
    <top>
-      <Pane prefHeight="137.0" prefWidth="494.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="102.0" prefWidth="494.0" BorderPane.alignment="CENTER">
          <children>
+
             <DatePicker fx:id="datePicker" layoutX="63.0" layoutY="57.0" onAction="#updateMemberBooking" prefHeight="43.0" prefWidth="369.0" promptText="Seleccionar fecha" />
+
          </children>
       </Pane>
    </top>
    <left>
-      <Pane prefHeight="385.0" prefWidth="62.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="385.0" prefWidth="38.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <Pane prefHeight="385.0" prefWidth="59.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="385.0" prefWidth="35.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
       <Pane prefHeight="124.0" prefWidth="494.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="296.0" layoutY="35.0" mnemonicParsing="false" onAction="#cancel" prefHeight="46.0" prefWidth="184.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Cancelar" textAlignment="CENTER">
+            <Button layoutX="284.0" layoutY="35.0" mnemonicParsing="false" onAction="#cancel" prefHeight="68.0" prefWidth="197.0" style="-fx-background-radius: 5em; -fx-border-radius: 5em; -fx-background-color: #FFBF3F;" text="Cancelar" textAlignment="CENTER">
                <font>
                   <Font size="31.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="35.0" mnemonicParsing="false" onAction="#confirm" prefHeight="68.0" prefWidth="211.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Confirmar" textAlignment="CENTER">
+            <Button layoutX="24.0" layoutY="35.0" mnemonicParsing="false" onAction="#delete" prefHeight="68.0" prefWidth="211.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-background-color: #7FC2FD;" text="Eliminar" textAlignment="CENTER">
                <font>
                   <Font name="Candara" size="33.0" />
                </font>
@@ -37,6 +40,13 @@
          </children></Pane>
    </bottom>
    <center>
-      <ListView fx:id="list" prefHeight="439.0" prefWidth="425.0" BorderPane.alignment="CENTER" />
+      <TableView fx:id="table" prefWidth="453.0" BorderPane.alignment="CENTER">
+         <columns>
+            <TableColumn editable="false" prefWidth="119.99999463558197" sortType="DESCENDING" sortable="false" text="Hora de inicio" />
+            <TableColumn editable="false" minWidth="-Infinity" prefWidth="123.1999740600586" sortType="DESCENDING" sortable="false" text="Hora de fin." />
+            <TableColumn editable="false" minWidth="0.79998779296875" prefWidth="100.79998779296875" sortType="DESCENDING" sortable="false" text="Nº de pista" />
+            <TableColumn editable="false" prefWidth="80.800048828125" sortType="DESCENDING" sortable="false" text="Pagado" />
+         </columns>
+      </TableView>
    </center>
 </BorderPane>
