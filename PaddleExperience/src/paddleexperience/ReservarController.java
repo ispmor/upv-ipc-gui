@@ -76,13 +76,13 @@ public class ReservarController implements Initializable {
    @FXML
    private void reservar(ActionEvent event) throws IOException {
        boolean success = false;
-       if(selectedBooking != null && lastCourt != null){
+       if(selectedBooking != null && lastCourt != null && datePicker.getValue() != null){
            System.out.println(lastCourt);
            success = backend.addNewBooking(lastCourt
-                   , selectedBooking.getMadeForDay()
+                   , datePicker.getValue()
                    , selectedBooking.getFromTime());
        } 
-       if(!success){
+       if(!success ){
            System.out.println("Failed to create a booking");
        }
        updateCourtTableViewOnClick(event);
