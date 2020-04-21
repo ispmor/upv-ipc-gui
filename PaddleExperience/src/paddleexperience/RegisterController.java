@@ -72,7 +72,7 @@ public class RegisterController implements Initializable {
            
            info.setTitle("Estado del registro");
            info.setHeaderText("Registrado correctamente");
-           
+           backend.save();
            info.showAndWait();
            
            Stage stage = new Stage();
